@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+  <h1>Profile Page</h1>
+  <a href="{% url 'friend:index' %}">Home</a>
+
+  <h1>{{friend.first_name}}</h1>
+  <h1>{{friend.last_name}}</h1>
+  <h2>{{friend.email}}</h2>
+  <h2>Joined {{friend.created_at}}</h2>
+  </body>
+</html>

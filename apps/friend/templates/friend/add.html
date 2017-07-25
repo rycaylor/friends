@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h1>People you think you want to be friends with</h1>
+    <a href="{% url 'friend:index' %}">Home</a>
+
+    <br> <br>
+    {{logged.name}}
+    {% for user in users%}
+    <table>
+        <tr>
+          <td></td>
+        </tr>
+      <tr>
+        <td><a href="{% url 'friend:profile' id=user.id %}">{{user.first_name}}</a></td>
+        <td>{{user.last_name}}</td>
+        <td><a href="{% url 'friend:make_friend' id=user.id %}">Add Friend</a></td>
+      </tr>
+    </table>
+    {% endfor %}
+
+
+  </body>
+</html>

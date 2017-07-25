@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h1>People who you think you are already friends with</h1>
+    <a href="{% url 'friend:index' %}">Home</a>
+    {% if friends %}
+    <h1>Friends List</h1>
+    {% else %}
+    <h1>No one loves you</h1>
+    {% endif %}
+
+    {% for friend in friends %}
+    <table>
+      <tr>
+        <td><a href="{% url 'friend:profile' id=friend.id %}">{{friend.first_name}}</a></td>
+        <td>{{friend.last_name}}</td>
+        <td><a href="{% url 'friend:remove' id=friend.id %}">Delete them they suck</a></td>
+      </tr>
+    </table>
+    {% endfor %}
+    {% if blocks %}
+    <h1>Bishes youve blocked</h1>
+    {% else %}
+    <h1>You dont think anyones crazy</h1>
+    {% endif %}
+
+    {% for block in blocks %}
+    <table>
+      <tr>
+        <td><a href="{% url 'friend:profile' id=block.id %}">{{block.first_name}}</a></td>
+        <td>{{block.last_name}}</td>
+        <td><a href="{% url 'friend:remove_block' id=block.id %}">I changed my mind they are okay</a></td>
+      </tr>
+    </table>
+    {% endfor %}
+  </body>
+</html>

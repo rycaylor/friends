@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h1>Welcome, {{user.first_name}}</h1>
+    <h2>Welcome to friend book where what we do is just add friends</h2>
+    <a href="{% url 'friend:list' %}">View your current friends list</a>
+    <p style="display: inline-block">|</p>
+    <a href="{% url 'friend:add' %}">Add A Friend</a>
+    <p style="display: inline-block">|</p>
+    <a href="{% url 'friend:block' %}">Block a User cause they suck</a>
+    <p style="display: inline-block">|</p>
+    <a href="{% url 'login:logout' %}">Logout</a>
+
+
+    <h2>Most of our recent additions</h2>
+
+
+    <table>
+      <thead>
+        <tr>
+
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Date Joined</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><a href="{% url 'friend:profile' id=most.id %}"> {{most.first_name}}</a></td>
+          <td>{{most.last_name}}</td>
+          <td>{{most.created_at}}</td>
+        </tr>
+        <tr>
+          <td><a href="{% url 'friend:profile' id=more.id %}">{{more.first_name}}</a></td>
+          <td>{{more.last_name}}</td>
+          <td>{{more.created_at}}</td>
+        </tr>
+        <tr>
+          <td><a href="{% url 'friend:profile' id=recents.id %}">{{recents.first_name}}</a></td>
+          <td>{{recents.last_name}}</td>
+          <td>{{recents.created_at}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>

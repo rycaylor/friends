@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h1>People that you want nothing to do with</h1>
+    <a href="{% url 'friend:index' %}">Home</a>
+
+
+    <br> <br>
+
+    {% for user in users%}
+
+    <table>
+      <tr>
+        <td><a href="{% url 'friend:profile' id=user.id %}">{{user.first_name}}</a></td>
+        <td>{{user.last_name}}</td>
+        <td><a href="{% url 'friend:make_block' id=user.id %}">Block Bish</a></td>
+      </tr>
+    </table>
+
+
+    {% endfor %}
+  </body>
+</html>
